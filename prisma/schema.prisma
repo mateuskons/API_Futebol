@@ -1,0 +1,42 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = "postgresql://docker:docker@localhost:5432/api_express_prisma"
+}
+
+model Jogador {
+  id String @id @default(uuid())
+  name String
+  idade Int
+  posicao String
+  nacionalidade String
+  @@map("jogador")
+}
+
+model Time {
+  id String @id @default(uuid())
+  name String
+  anoFundacao Int
+  pais String
+  tecnico String
+  @@map("time")
+}
+
+model Partida {
+  id String @id @default(uuid())
+  data String
+  local String
+  placar String
+  timeCasa String
+  timeVisitante String
+  @@map("partida")
+}
